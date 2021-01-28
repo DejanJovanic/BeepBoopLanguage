@@ -1,0 +1,20 @@
+Products:
+    'products {'
+        robots*=Robot
+    '}'
+;
+Robot:
+    'robot' name=STRING '{'
+        'properties' ('inherits from ' inherits*=[Robot|STRING][','])? '{'
+            properties*=Property
+        '}'
+   '}'
+;
+Property:
+    name=ID '=' value = BASETYPE
+;
+
+
+Comment:
+  /\/\/.*$/
+;

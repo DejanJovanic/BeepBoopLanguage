@@ -1,0 +1,22 @@
+products {
+    robot 'My_Robot' {
+        properties {
+            manufacturer = 'Manufacturer #1'
+            power = 39.2
+            battery_capacity = 49.3
+        }
+    }
+
+    robot 'Another_Robot' {
+        properties inherits from 'My_Robot', 'My_Robot2' {
+            // Ovo je komentar
+        }
+    }
+        robot 'My_Robot2' {
+        properties {
+            manu = 'Manufacturer #2'
+            pow = 19.2
+            battery = 49.38
+        }
+    }
+}
