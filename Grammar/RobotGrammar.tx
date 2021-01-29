@@ -1,7 +1,5 @@
-Products:
-    'products {'
-        robots*=Robot
-    '}'
+Model:
+    Products | Robot | Property
 ;
 Robot:
     'robot' name=STRING '{'
@@ -10,6 +8,12 @@ Robot:
         '}'
    '}'
 ;
+Products:
+    'products {'
+        robots*=Robot
+    '}'
+;
+
 Property:
     name=ID '=' value = BASETYPE
 ;
