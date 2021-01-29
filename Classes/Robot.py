@@ -7,8 +7,6 @@ class Robot:
         self.parent = parent
         self.inherits = inherits
         self.properties = properties
-        for item in properties:
-            self.__dict__[item.name] = item.value
 
     def inherit_properties(self):
         for parent in self.inherits:

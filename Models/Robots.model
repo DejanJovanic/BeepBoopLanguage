@@ -14,7 +14,6 @@ products {
     }
         robot 'My_Robot2' {
         properties {
-            manu = 'Manufacturer #2'
             pow = 19.2
             battery = 49.38
         }
