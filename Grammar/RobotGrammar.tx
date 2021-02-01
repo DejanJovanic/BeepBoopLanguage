@@ -15,9 +15,12 @@ Products:
 ;
 
 Property:
-    name=ID '=' value = BASETYPE
+    name=ID '=' value = PropertyValue
 ;
 
+PropertyValue:
+    STRING | BOOL | FLOAT | NUMBER
+;
 
 Comment:
   /\/\/.*$/
