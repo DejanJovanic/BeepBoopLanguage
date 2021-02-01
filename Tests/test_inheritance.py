@@ -179,6 +179,33 @@ def test_inheritance_multiple_items_same_properties_end():
     assert products.robots[2].properties[1].name == 'Item1' and products.robots[2].properties[1].value == 6.2
     assert products.robots[2].properties[0].name == 'Item3' and products.robots[2].properties[0].value == 'atribut'
 
+def test_inheritance_multiple_items_same_properties_end2():
+    robot_model = """
+      products {
+          robot 'robot' {
+              properties   {
+                  Item1 = 6.2
+              }
+          }
+          robot 'robot2'  {
+              properties {
+                  Item2 = 7.21
+              }
+          }
+          robot 'robot3'  {
+              properties inherits from 'robot','robot2'  {
+                  Item1 = 'atribut'
+              }
+          }
+      }
+       """
+    products = extract_model_string(robot_model)
+
+    assert len(products.robots[2].properties) == 2
+
+    assert products.robots[2].properties[1].name == 'Item2' and products.robots[2].properties[1].value == 7.21
+    assert products.robots[2].properties[0].name == 'Item1' and products.robots[2].properties[0].value == 'atribut'
+
 def test_inheritance_depth_one_level():
     robot_model = """
       products {
@@ -273,3 +300,39 @@ def test_inheritance_depth2():
 
     assert len(products.robots[1].properties) == 5
     assert len(products.robots[2].properties) == 4
+
+
+def test_inheritance_depth2_repeating_prop():
+    robot_model = """
+      products {
+          robot 'robot'   {
+              properties   {
+                  Item1 = 6.2
+              }
+          }
+          robot 'robot2'   {
+              properties inherits from 'robot3' {
+                  Item2 = true
+              }
+          }
+          robot 'robot3'  {
+              properties  inherits from 'robot','robot4','robot5' {
+                  Item5 = 'atribut'
+              }
+          }
+         robot 'robot4'  {
+              properties {
+                  Item4 = 'atribut2'
+              }
+         }
+         robot 'robot5'  {
+              properties  {
+                  Item5 = 'atribut3'
+              }
+         }
+      }
+    """
+    products = extract_model_string(robot_model)
+
+    assert len(products.robots[1].properties) == 4
+    assert len(products.robots[2].properties) == 3
