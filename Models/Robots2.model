@@ -1,17 +1,4 @@
-products {
-  robot 'robot'   {
-      properties   {
-          Item1 = 6.2
+      robot '  ' {
+        properties {
+        }
       }
-  }
-  robot 'robot2'   {
-      properties inherits from 'robot3'  {
-          Item2 = true
-      }
-  }
-  robot 'robot3'  {
-      properties  inherits from 'robot' {
-          Item3 = 'atribut'
-      }
-  }
-}

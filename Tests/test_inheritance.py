@@ -1,5 +1,5 @@
 import pytest
-from textx import TextXSyntaxError, TextXSemanticError
+from textx import TextXSemanticError
 
 from ModelGenerator import extract_model_string
 
@@ -26,6 +26,7 @@ def test_inheritance_wrong_name():
     with pytest.raises(TextXSemanticError):
         extract_model_string(robot_model)
 
+
 def test_inheritance_one_item_different_properties():
     robot_model = """
       products {
@@ -48,7 +49,7 @@ def test_inheritance_one_item_different_properties():
     products = extract_model_string(robot_model)
 
     assert len(products.robots) == 2
-    #Robot1
+    # Robot1
     assert len(products.robots[0].properties) == 3
 
     assert products.robots[0].properties[0].name == 'Item1' and products.robots[0].properties[0].value == 6.2
@@ -57,7 +58,7 @@ def test_inheritance_one_item_different_properties():
     # Robot2
     assert len(products.robots[1].properties) == 6
 
-    assert products.robots[1].inherits[0] == products.robots[0]
+    assert products.robots[1].inherits[0] == products.robots[0].name
 
     assert products.robots[1].properties[3].name == 'Item1' and products.robots[1].properties[3].value == 6.2
     assert products.robots[1].properties[4].name == 'Item2' and products.robots[1].properties[4].value == 'ajtem1'
@@ -66,6 +67,7 @@ def test_inheritance_one_item_different_properties():
     assert products.robots[1].properties[0].name == 'Item4' and products.robots[1].properties[0].value == 2.1
     assert products.robots[1].properties[1].name == 'Item5' and products.robots[1].properties[1].value == 'ajtem2'
     assert products.robots[1].properties[2].name == 'Item6' and not products.robots[1].properties[2].value
+
 
 def test_inheritance_multiple_items_different_properties_start():
     robot_model = """
@@ -94,6 +96,7 @@ def test_inheritance_multiple_items_different_properties_start():
     assert products.robots[0].properties[0].name == 'Item1' and products.robots[0].properties[0].value == 6.2
     assert products.robots[0].properties[1].name == 'Item2' and products.robots[0].properties[1].value
     assert products.robots[0].properties[2].name == 'Item3' and products.robots[0].properties[2].value == 'atribut'
+
 
 def test_inheritance_multiple_items_different_properties_middle():
     robot_model = """
@@ -152,6 +155,7 @@ def test_inheritance_multiple_items_different_properties_end():
     assert products.robots[2].properties[2].name == 'Item2' and products.robots[2].properties[2].value
     assert products.robots[2].properties[0].name == 'Item3' and products.robots[2].properties[0].value == 'atribut'
 
+
 def test_inheritance_multiple_items_same_properties_end():
     robot_model = """
       products {
@@ -179,6 +183,7 @@ def test_inheritance_multiple_items_same_properties_end():
     assert products.robots[2].properties[1].name == 'Item1' and products.robots[2].properties[1].value == 6.2
     assert products.robots[2].properties[0].name == 'Item3' and products.robots[2].properties[0].value == 'atribut'
 
+
 def test_inheritance_multiple_items_same_properties_end2():
     robot_model = """
       products {
@@ -205,6 +210,7 @@ def test_inheritance_multiple_items_same_properties_end2():
 
     assert products.robots[2].properties[1].name == 'Item2' and products.robots[2].properties[1].value == 7.21
     assert products.robots[2].properties[0].name == 'Item1' and products.robots[2].properties[0].value == 'atribut'
+
 
 def test_inheritance_depth_one_level():
     robot_model = """
@@ -265,6 +271,7 @@ def test_inheritance_depth():
     assert len(products.robots[1].properties) == 5
     assert len(products.robots[2].properties) == 3
     assert len(products.robots[4].properties) == 2
+
 
 def test_inheritance_depth2():
     robot_model = """

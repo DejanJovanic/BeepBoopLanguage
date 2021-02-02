@@ -3,7 +3,7 @@ Model:
 ;
 Robot:
     'robot' name=STRING '{'
-        'properties' ('inherits from ' inherits*=[Robot|STRING][','])? '{'
+        'properties' ('inherits from ' inherits*=STRING[','])? '{'
             properties*=Property
         '}'
    '}'

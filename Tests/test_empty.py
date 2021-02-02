@@ -66,6 +66,11 @@ def test_empty_robot_incorrect2(empty_robots_incorrect2):
         extract_model_string(empty_robots_incorrect2)
 
 
+def test_empty_robot_incorrect3(empty_robots_incorrect3):
+    with pytest.raises(TextXSyntaxError):
+        extract_model_string(empty_robots_incorrect3)
+
+
 def test_empty_robot_correct_empty_set(empty_robots_correct_empty):
     model = extract_model_string(empty_robots_correct_empty)
     assert model
