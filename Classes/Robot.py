@@ -19,7 +19,7 @@ class Robot:
                     self.properties.append(Property(parent=self, name=prop[0], value=prop[1]))
 
     def get_properties(self, robots):
-        #Problem stack overflow rekurzije
+        # Problem stack overflow rekurzije
         ret_val = {}
 
         for item in self.properties:
