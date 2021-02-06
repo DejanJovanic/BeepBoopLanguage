@@ -15,8 +15,7 @@ def check_inherited_name(robot):
         raise TextXSemanticError('Error in specifying inherited robots')
 
 
-def check_if_inherited_exists(robot, robots):
-    names = [item.name for item in robots]
+def check_if_inherited_exists(robot, names):
     is_inheritance_valid = [item in names for item in robot.inherits]
 
     if not all(is_inheritance_valid):
@@ -30,11 +29,12 @@ def set_inheritance(products):
 
 def check_model_and_set_inheritance(model, metamodel):
     if isinstance(model, Products):
+        names = [item.name for item in model.robots]
         for robot in model.robots:
             check_name(robot)
             if len(robot.inherits) != 0:
                 check_inherited_name(robot)
-                check_if_inherited_exists(robot, model.robots)
+                check_if_inherited_exists(robot, names)
 
         set_inheritance(model)
     else:
