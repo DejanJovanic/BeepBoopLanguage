@@ -19,7 +19,7 @@ Property:
 ;
 
 PropertyValue:
-    STRING | BOOL | FLOAT | NUMBER
+    STRING |  FLOAT | NUMBER |  BOOL
 ;
 
 Comment:

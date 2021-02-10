@@ -97,7 +97,7 @@ def test_multi_robot_set_multi_property():
     products {
         robot 'robot' {
             properties {
-                Item4 = 01.1 //ZASTO????
+                Item4 = 1.1 //ZASTO????
                 Item2 = 'ajtem1'
                 Item3 = true
             }
